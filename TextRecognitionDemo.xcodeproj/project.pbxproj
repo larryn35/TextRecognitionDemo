@@ -11,6 +11,7 @@
 		5C625791261AD61E00423A40 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C625790261AD61E00423A40 /* ImagePicker.swift */; };
 		5C625799261AD68700423A40 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C625798261AD68700423A40 /* APIService.swift */; };
 		5C62579E261ADD8E00423A40 /* RecognizerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62579D261ADD8E00423A40 /* RecognizerService.swift */; };
+		5C6257C1261AE78100423A40 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257C0261AE78100423A40 /* ContentViewModel.swift */; };
 		5CABCC4C2619957500AD30EC /* TextRecognitionDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC4B2619957500AD30EC /* TextRecognitionDemoApp.swift */; };
 		5CABCC4E2619957500AD30EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC4D2619957500AD30EC /* ContentView.swift */; };
 		5CABCC502619957D00AD30EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CABCC4F2619957D00AD30EC /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		5C625790261AD61E00423A40 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5C625798261AD68700423A40 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		5C62579D261ADD8E00423A40 /* RecognizerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerService.swift; sourceTree = "<group>"; };
+		5C6257C0261AE78100423A40 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		5CABCC482619957500AD30EC /* TextRecognitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextRecognitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CABCC4B2619957500AD30EC /* TextRecognitionDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionDemoApp.swift; sourceTree = "<group>"; };
 		5CABCC4D2619957500AD30EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,22 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		5C6257BE261AE74E00423A40 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5C6257C0261AE78100423A40 /* ContentViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5C6257BF261AE75E00423A40 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5CABCC4D2619957500AD30EC /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		5CABCC3F2619957500AD30EC = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +176,8 @@
 				5C62578F261AD53A00423A40 /* Helpers */,
 				5C62578E261AD53300423A40 /* Services */,
 				5CABCC4B2619957500AD30EC /* TextRecognitionDemoApp.swift */,
-				5CABCC4D2619957500AD30EC /* ContentView.swift */,
+				5C6257BF261AE75E00423A40 /* Views */,
+				5C6257BE261AE74E00423A40 /* ViewModels */,
 				5C62578C261AD4D200423A40 /* Resources */,
 			);
 			path = TextRecognitionDemo;
@@ -478,6 +497,7 @@
 			files = (
 				5C625791261AD61E00423A40 /* ImagePicker.swift in Sources */,
 				5CABCC4E2619957500AD30EC /* ContentView.swift in Sources */,
+				5C6257C1261AE78100423A40 /* ContentViewModel.swift in Sources */,
 				5C62579E261ADD8E00423A40 /* RecognizerService.swift in Sources */,
 				5C625799261AD68700423A40 /* APIService.swift in Sources */,
 				5CABCC4C2619957500AD30EC /* TextRecognitionDemoApp.swift in Sources */,
@@ -640,6 +660,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TextRecognitionDemo/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = L22459R7QW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TextRecognitionDemo/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -662,6 +683,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TextRecognitionDemo/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = L22459R7QW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TextRecognitionDemo/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

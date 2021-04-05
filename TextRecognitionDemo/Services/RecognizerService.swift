@@ -8,8 +8,9 @@
 import UIKit
 import MLKit
 
-struct RecognizerService {
-  func scanText(from image: UIImage) -> [String] {
+struct RecognizerService: RecognizerServiceProtocol {
+  
+  func scanText(from image: UIImage, completion: @escaping (Result<[String],RecognizerError>) -> Void) {
     var results = [String]()
     
     let visionImage = VisionImage(image: image)
@@ -20,7 +21,7 @@ struct RecognizerService {
     textRecognizer.process(visionImage) { result, error in
       guard error == nil, let result = result else {
         // Error handling
-        print("Error processing image")
+        completion(.failure(.error("textRecognizer unable to process image")))
         return
       }
       // Recognized text
@@ -32,8 +33,15 @@ struct RecognizerService {
           }
         }
       }
+      completion(.success(results))
     }
-    
-    return results
   }
+}
+
+enum RecognizerError: Error {
+  case error(_ errorString: String)
+}
+
+protocol RecognizerServiceProtocol {
+  func scanText(from image: UIImage, completion: @escaping (Result<[String],RecognizerError>) -> Void)
 }
