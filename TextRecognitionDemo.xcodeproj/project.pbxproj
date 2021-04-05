@@ -3,16 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CA32B882033E25D27BAA073 /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B850CCC2FD4C17BD1B934E /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework */; };
 		5CABCC4C2619957500AD30EC /* TextRecognitionDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC4B2619957500AD30EC /* TextRecognitionDemoApp.swift */; };
 		5CABCC4E2619957500AD30EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC4D2619957500AD30EC /* ContentView.swift */; };
 		5CABCC502619957D00AD30EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CABCC4F2619957D00AD30EC /* Assets.xcassets */; };
 		5CABCC532619957D00AD30EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CABCC522619957D00AD30EC /* Preview Assets.xcassets */; };
 		5CABCC5E2619957E00AD30EC /* TextRecognitionDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC5D2619957E00AD30EC /* TextRecognitionDemoTests.swift */; };
 		5CABCC692619957F00AD30EC /* TextRecognitionDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC682619957F00AD30EC /* TextRecognitionDemoUITests.swift */; };
+		7BC1BBD4928CF6FFFD413172 /* Pods_TextRecognitionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7FA7B95B125B7C3C91A8A /* Pods_TextRecognitionDemo.framework */; };
+		D78AC263DA841077213E0F3E /* Pods_TextRecognitionDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69E698B6FC330400808F02B /* Pods_TextRecognitionDemoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1EC41F51DB0609CE9E4CCEC7 /* Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5BD7FA7B95B125B7C3C91A8A /* Pods_TextRecognitionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextRecognitionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CABCC482619957500AD30EC /* TextRecognitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextRecognitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CABCC4B2619957500AD30EC /* TextRecognitionDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionDemoApp.swift; sourceTree = "<group>"; };
 		5CABCC4D2619957500AD30EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +50,13 @@
 		5CABCC642619957F00AD30EC /* TextRecognitionDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextRecognitionDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CABCC682619957F00AD30EC /* TextRecognitionDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionDemoUITests.swift; sourceTree = "<group>"; };
 		5CABCC6A2619957F00AD30EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78B850CCC2FD4C17BD1B934E /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A0C93FD120130D161CD5AA /* Pods-TextRecognitionDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextRecognitionDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-TextRecognitionDemoTests/Pods-TextRecognitionDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A65B4729DCAC85F4A6140DA7 /* Pods-TextRecognitionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextRecognitionDemo.release.xcconfig"; path = "Target Support Files/Pods-TextRecognitionDemo/Pods-TextRecognitionDemo.release.xcconfig"; sourceTree = "<group>"; };
+		B180BBED22C843BE63451F4D /* Pods-TextRecognitionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextRecognitionDemo.debug.xcconfig"; path = "Target Support Files/Pods-TextRecognitionDemo/Pods-TextRecognitionDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		CC33C9861A9D47FB113FE89A /* Pods-TextRecognitionDemo-TextRecognitionDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextRecognitionDemo-TextRecognitionDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D69E698B6FC330400808F02B /* Pods_TextRecognitionDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextRecognitionDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E68DB2DF5770FEA07B8AECD1 /* Pods-TextRecognitionDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextRecognitionDemoTests.release.xcconfig"; path = "Target Support Files/Pods-TextRecognitionDemoTests/Pods-TextRecognitionDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BC1BBD4928CF6FFFD413172 /* Pods_TextRecognitionDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D78AC263DA841077213E0F3E /* Pods_TextRecognitionDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +80,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CA32B882033E25D27BAA073 /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AEFB04E07C57A7616843479 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BD7FA7B95B125B7C3C91A8A /* Pods_TextRecognitionDemo.framework */,
+				78B850CCC2FD4C17BD1B934E /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework */,
+				D69E698B6FC330400808F02B /* Pods_TextRecognitionDemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5CABCC3F2619957500AD30EC = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +104,8 @@
 				5CABCC5C2619957E00AD30EC /* TextRecognitionDemoTests */,
 				5CABCC672619957F00AD30EC /* TextRecognitionDemoUITests */,
 				5CABCC492619957500AD30EC /* Products */,
+				67061B2DF46D6C6378E58256 /* Pods */,
+				3AEFB04E07C57A7616843479 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +157,19 @@
 			path = TextRecognitionDemoUITests;
 			sourceTree = "<group>";
 		};
+		67061B2DF46D6C6378E58256 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B180BBED22C843BE63451F4D /* Pods-TextRecognitionDemo.debug.xcconfig */,
+				A65B4729DCAC85F4A6140DA7 /* Pods-TextRecognitionDemo.release.xcconfig */,
+				1EC41F51DB0609CE9E4CCEC7 /* Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig */,
+				CC33C9861A9D47FB113FE89A /* Pods-TextRecognitionDemo-TextRecognitionDemoUITests.release.xcconfig */,
+				82A0C93FD120130D161CD5AA /* Pods-TextRecognitionDemoTests.debug.xcconfig */,
+				E68DB2DF5770FEA07B8AECD1 /* Pods-TextRecognitionDemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +177,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CABCC6D2619957F00AD30EC /* Build configuration list for PBXNativeTarget "TextRecognitionDemo" */;
 			buildPhases = (
+				05979D5CF4B3A97653F5488A /* [CP] Check Pods Manifest.lock */,
 				5CABCC442619957500AD30EC /* Sources */,
 				5CABCC452619957500AD30EC /* Frameworks */,
 				5CABCC462619957500AD30EC /* Resources */,
+				1A0A542F3F7B3B5B963F20F3 /* [CP] Embed Pods Frameworks */,
+				8C695754170D47DE43AE7906 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -154,6 +197,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CABCC702619957F00AD30EC /* Build configuration list for PBXNativeTarget "TextRecognitionDemoTests" */;
 			buildPhases = (
+				821A24308DC076969EF2EF79 /* [CP] Check Pods Manifest.lock */,
 				5CABCC552619957E00AD30EC /* Sources */,
 				5CABCC562619957E00AD30EC /* Frameworks */,
 				5CABCC572619957E00AD30EC /* Resources */,
@@ -172,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CABCC732619957F00AD30EC /* Build configuration list for PBXNativeTarget "TextRecognitionDemoUITests" */;
 			buildPhases = (
+				4C6C21E28F0F450227BE19A9 /* [CP] Check Pods Manifest.lock */,
 				5CABCC602619957F00AD30EC /* Sources */,
 				5CABCC612619957F00AD30EC /* Frameworks */,
 				5CABCC622619957F00AD30EC /* Resources */,
+				FFBE2197E91634AFE5F59023 /* [CP] Embed Pods Frameworks */,
+				3E0C27AD9D4E53F925A781EF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +300,143 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05979D5CF4B3A97653F5488A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TextRecognitionDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1A0A542F3F7B3B5B963F20F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo/Pods-TextRecognitionDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo/Pods-TextRecognitionDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo/Pods-TextRecognitionDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E0C27AD9D4E53F925A781EF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C6C21E28F0F450227BE19A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TextRecognitionDemo-TextRecognitionDemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		821A24308DC076969EF2EF79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TextRecognitionDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C695754170D47DE43AE7906 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo/Pods-TextRecognitionDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo/Pods-TextRecognitionDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo/Pods-TextRecognitionDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFBE2197E91634AFE5F59023 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5CABCC442619957500AD30EC /* Sources */ = {
@@ -414,6 +598,7 @@
 		};
 		5CABCC6E2619957F00AD30EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B180BBED22C843BE63451F4D /* Pods-TextRecognitionDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -429,12 +614,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.larryn35.TextRecognitionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		5CABCC6F2619957F00AD30EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A65B4729DCAC85F4A6140DA7 /* Pods-TextRecognitionDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -450,12 +636,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.larryn35.TextRecognitionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		5CABCC712619957F00AD30EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82A0C93FD120130D161CD5AA /* Pods-TextRecognitionDemoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -477,6 +664,7 @@
 		};
 		5CABCC722619957F00AD30EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E68DB2DF5770FEA07B8AECD1 /* Pods-TextRecognitionDemoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -498,6 +686,7 @@
 		};
 		5CABCC742619957F00AD30EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EC41F51DB0609CE9E4CCEC7 /* Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -517,6 +706,7 @@
 		};
 		5CABCC752619957F00AD30EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC33C9861A9D47FB113FE89A /* Pods-TextRecognitionDemo-TextRecognitionDemoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
