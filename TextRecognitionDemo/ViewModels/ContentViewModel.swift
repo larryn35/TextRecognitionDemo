@@ -8,7 +8,6 @@
 import SwiftUI
 
 final class ContentViewModel: ObservableObject {
-  @Published var inputImage: UIImage?
   @Published var image: Image?
   @Published var drugMatches = [String]()
   @Published var cleanedResults = [String]()
@@ -26,7 +25,7 @@ final class ContentViewModel: ObservableObject {
   }
   
   // Load image from Camera into recognizer
-  func loadImage() {
+  func loadImage(_ inputImage: UIImage?) {
     guard let inputImage = inputImage else {
       errorMessage = "Failed to get picture from camera"
       showErrorMessage = true
@@ -63,7 +62,6 @@ final class ContentViewModel: ObservableObject {
   
   func clearList() {
     drugMatches = []
-    inputImage = nil
     image = nil
     drugMatches = []
     cleanedResults = []

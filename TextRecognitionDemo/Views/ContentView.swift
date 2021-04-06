@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
   @StateObject private var viewModel = ContentViewModel()
+  @State private var inputImage: UIImage?
   @State private var isSheetPresented = false
   @State private var selectedSheetType: SheetType = .camera {
     didSet {
@@ -52,6 +53,7 @@ struct ContentView: View {
             .disabled(viewModel.drugMatches.count < 2) // Require 2 or more drug matches to perform interactions check
             Button {
               viewModel.clearList()
+              inputImage = nil
             } label: {
               Label("Clear list", systemImage: "xmark.circle.fill")
                 .foregroundColor(.red)
@@ -62,7 +64,7 @@ struct ContentView: View {
     .sheet(isPresented: $isSheetPresented, onDismiss: sheetAction) {
       switch selectedSheetType {
       case .camera:
-        ImagePicker(image: $viewModel.inputImage)
+        ImagePicker(image: $inputImage)
       case .interactions:
         InteractionsView(drugMatches: viewModel.drugMatches)
       }
@@ -133,7 +135,7 @@ struct ContentView: View {
     
     // Trigger load image on dismiss only if sheet was an ImagePicker
     if selectedSheetType == .camera {
-      viewModel.loadImage()
+      viewModel.loadImage(inputImage)
     }
   }
 }

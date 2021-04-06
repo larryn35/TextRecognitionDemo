@@ -16,8 +16,8 @@ class ContentVMTests: XCTestCase {
     XCTAssertTrue(viewModel.cleanedResults.isEmpty, "Cleaned results not empty at start")
     
     // "Image loaded from camera"
-    viewModel.inputImage = UIImage(systemName: "circle")
-    viewModel.loadImage()
+    let inputImage = UIImage(systemName: "circle")
+    viewModel.loadImage(inputImage)
     
     // Cleaned results after loading image
     XCTAssertTrue(!viewModel.cleanedResults.isEmpty, "Cleaned results not populated correctly")
@@ -39,8 +39,8 @@ class ContentVMTests: XCTestCase {
     XCTAssertTrue(viewModel.drugMatches.isEmpty, "Cleaned results not empty at start")
     
     // "Image loaded from camera"
-    viewModel.inputImage = UIImage(systemName: "circle")
-    viewModel.loadImage()
+    let inputImage = UIImage(systemName: "circle")
+    viewModel.loadImage(inputImage)
     
     // Drug matches after loading image - should be [Citalopram, Ibuprofen, Citalopram, Ibuprofen]
     XCTAssertEqual(viewModel.drugMatches.count, 4, "Drug matches count does not equal 4")
@@ -58,8 +58,8 @@ class ContentVMTests: XCTestCase {
     XCTAssertTrue(viewModel.errorMessage.isEmpty,"errorMessage not blank at start")
     
     // "Image loaded from camera"
-    viewModel.inputImage = UIImage(systemName: "circle")
-    viewModel.loadImage()
+    let inputImage = UIImage(systemName: "circle")
+    viewModel.loadImage(inputImage)
     
     // Error status after loading image
     XCTAssertTrue(viewModel.showErrorMessage, "showErrorMessage not set to true after recognizer completed with failure")
@@ -75,7 +75,7 @@ class ContentVMTests: XCTestCase {
     let viewModel = ContentViewModel(recognizer: MockRecognizer())
     
     // "Image not loaded, inputImage is nil"
-    viewModel.loadImage()
+    viewModel.loadImage(nil)
     
     // Error status after attempting to load image
     XCTAssertTrue(viewModel.showErrorMessage, "showErrorMessage not set to true after attempting to load nil inputImage")
