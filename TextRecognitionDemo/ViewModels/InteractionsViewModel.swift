@@ -55,6 +55,7 @@ extension InteractionsViewModel {
       components.path = "/REST/rxcui.json"
       components.queryItems = [
         URLQueryItem(name: "name", value: drug),
+        URLQueryItem(name: "search", value: "1")
       ]
       
       return components.url

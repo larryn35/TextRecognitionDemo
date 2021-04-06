@@ -18,7 +18,7 @@ class InteractionsVMTests: XCTestCase {
       drugMatches: drugMatches
     )
     
-    let url = viewModel.constructRxCuiURL(for: "sertraline")
+    let url = viewModel.constructRxCuiURL(for: "lisinopril/hydrochlorothiazide")
     XCTAssertEqual(url?.absoluteString, MockData.rxCuiURL, "RxCuiURL not constructed correctly")
   }
   
