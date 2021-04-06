@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		1CA32B882033E25D27BAA073 /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B850CCC2FD4C17BD1B934E /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework */; };
 		5C622902261BD3D4008600D0 /* InteractionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622901261BD3D4008600D0 /* InteractionsView.swift */; };
+		5C622907261BE042008600D0 /* InteractionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622906261BE042008600D0 /* InteractionsViewModel.swift */; };
+		5C622910261BE527008600D0 /* RxCui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62290F261BE527008600D0 /* RxCui.swift */; };
+		5C622915261BE820008600D0 /* DrugInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622914261BE820008600D0 /* DrugInteraction.swift */; };
+		5C622929261BED59008600D0 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622928261BED59008600D0 /* MockData.swift */; };
+		5C622931261C0D31008600D0 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622930261C0D31008600D0 /* MockAPIService.swift */; };
+		5C622936261C0F18008600D0 /* MockRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622935261C0F18008600D0 /* MockRecognizer.swift */; };
+		5C62293B261C1009008600D0 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62293A261C1009008600D0 /* ModelTests.swift */; };
+		5C622943261C14C0008600D0 /* ContentVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622942261C14C0008600D0 /* ContentVMTests.swift */; };
+		5C622948261C1554008600D0 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622947261C1554008600D0 /* StringExtensionTests.swift */; };
+		5C622966261C2FE4008600D0 /* InteractionsVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622965261C2FE4008600D0 /* InteractionsVMTests.swift */; };
 		5C625791261AD61E00423A40 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C625790261AD61E00423A40 /* ImagePicker.swift */; };
 		5C625799261AD68700423A40 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C625798261AD68700423A40 /* APIService.swift */; };
 		5C62579E261ADD8E00423A40 /* RecognizerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62579D261ADD8E00423A40 /* RecognizerService.swift */; };
@@ -19,7 +29,6 @@
 		5CABCC4E2619957500AD30EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC4D2619957500AD30EC /* ContentView.swift */; };
 		5CABCC502619957D00AD30EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CABCC4F2619957D00AD30EC /* Assets.xcassets */; };
 		5CABCC532619957D00AD30EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CABCC522619957D00AD30EC /* Preview Assets.xcassets */; };
-		5CABCC5E2619957E00AD30EC /* TextRecognitionDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC5D2619957E00AD30EC /* TextRecognitionDemoTests.swift */; };
 		5CABCC692619957F00AD30EC /* TextRecognitionDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC682619957F00AD30EC /* TextRecognitionDemoUITests.swift */; };
 		7BC1BBD4928CF6FFFD413172 /* Pods_TextRecognitionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD7FA7B95B125B7C3C91A8A /* Pods_TextRecognitionDemo.framework */; };
 		D78AC263DA841077213E0F3E /* Pods_TextRecognitionDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69E698B6FC330400808F02B /* Pods_TextRecognitionDemoTests.framework */; };
@@ -46,6 +55,16 @@
 		1EC41F51DB0609CE9E4CCEC7 /* Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5BD7FA7B95B125B7C3C91A8A /* Pods_TextRecognitionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextRecognitionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C622901261BD3D4008600D0 /* InteractionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsView.swift; sourceTree = "<group>"; };
+		5C622906261BE042008600D0 /* InteractionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsViewModel.swift; sourceTree = "<group>"; };
+		5C62290F261BE527008600D0 /* RxCui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCui.swift; sourceTree = "<group>"; };
+		5C622914261BE820008600D0 /* DrugInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugInteraction.swift; sourceTree = "<group>"; };
+		5C622928261BED59008600D0 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		5C622930261C0D31008600D0 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
+		5C622935261C0F18008600D0 /* MockRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRecognizer.swift; sourceTree = "<group>"; };
+		5C62293A261C1009008600D0 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		5C622942261C14C0008600D0 /* ContentVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentVMTests.swift; sourceTree = "<group>"; };
+		5C622947261C1554008600D0 /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
+		5C622965261C2FE4008600D0 /* InteractionsVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsVMTests.swift; sourceTree = "<group>"; };
 		5C625790261AD61E00423A40 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5C625798261AD68700423A40 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		5C62579D261ADD8E00423A40 /* RecognizerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerService.swift; sourceTree = "<group>"; };
@@ -59,7 +78,6 @@
 		5CABCC522619957D00AD30EC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CABCC542619957D00AD30EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CABCC592619957E00AD30EC /* TextRecognitionDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextRecognitionDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CABCC5D2619957E00AD30EC /* TextRecognitionDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionDemoTests.swift; sourceTree = "<group>"; };
 		5CABCC5F2619957E00AD30EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CABCC642619957F00AD30EC /* TextRecognitionDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextRecognitionDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CABCC682619957F00AD30EC /* TextRecognitionDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionDemoUITests.swift; sourceTree = "<group>"; };
@@ -111,6 +129,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5C62290B261BE47F008600D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C62290F261BE527008600D0 /* RxCui.swift */,
+				5C622914261BE820008600D0 /* DrugInteraction.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5C622919261BEC45008600D0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5C6257DB261AFA1100423A40 /* Data.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5C62291A261BEC62008600D0 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				5C622928261BED59008600D0 /* MockData.swift */,
+				5C622930261C0D31008600D0 /* MockAPIService.swift */,
+				5C622935261C0F18008600D0 /* MockRecognizer.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		5C62578C261AD4D200423A40 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				5C625790261AD61E00423A40 /* ImagePicker.swift */,
-				5C6257DB261AFA1100423A40 /* Data.swift */,
 				5C6257E0261AFE2300423A40 /* String+DataScrubing.swift */,
 			);
 			path = Helpers;
@@ -144,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6257C0261AE78100423A40 /* ContentViewModel.swift */,
+				5C622906261BE042008600D0 /* InteractionsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -182,11 +227,14 @@
 		5CABCC4A2619957500AD30EC /* TextRecognitionDemo */ = {
 			isa = PBXGroup;
 			children = (
-				5C62578F261AD53A00423A40 /* Helpers */,
-				5C62578E261AD53300423A40 /* Services */,
 				5CABCC4B2619957500AD30EC /* TextRecognitionDemoApp.swift */,
+				5C62290B261BE47F008600D0 /* Models */,
 				5C6257BF261AE75E00423A40 /* Views */,
 				5C6257BE261AE74E00423A40 /* ViewModels */,
+				5C62578E261AD53300423A40 /* Services */,
+				5C622919261BEC45008600D0 /* Data */,
+				5C62578F261AD53A00423A40 /* Helpers */,
+				5C62291A261BEC62008600D0 /* Mock */,
 				5C62578C261AD4D200423A40 /* Resources */,
 			);
 			path = TextRecognitionDemo;
@@ -203,7 +251,10 @@
 		5CABCC5C2619957E00AD30EC /* TextRecognitionDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				5CABCC5D2619957E00AD30EC /* TextRecognitionDemoTests.swift */,
+				5C622947261C1554008600D0 /* StringExtensionTests.swift */,
+				5C62293A261C1009008600D0 /* ModelTests.swift */,
+				5C622942261C14C0008600D0 /* ContentVMTests.swift */,
+				5C622965261C2FE4008600D0 /* InteractionsVMTests.swift */,
 				5CABCC5F2619957E00AD30EC /* Info.plist */,
 			);
 			path = TextRecognitionDemoTests;
@@ -510,7 +561,13 @@
 				5CABCC4E2619957500AD30EC /* ContentView.swift in Sources */,
 				5C6257C1261AE78100423A40 /* ContentViewModel.swift in Sources */,
 				5C62579E261ADD8E00423A40 /* RecognizerService.swift in Sources */,
+				5C622915261BE820008600D0 /* DrugInteraction.swift in Sources */,
 				5C6257E1261AFE2400423A40 /* String+DataScrubing.swift in Sources */,
+				5C622907261BE042008600D0 /* InteractionsViewModel.swift in Sources */,
+				5C622910261BE527008600D0 /* RxCui.swift in Sources */,
+				5C622931261C0D31008600D0 /* MockAPIService.swift in Sources */,
+				5C622929261BED59008600D0 /* MockData.swift in Sources */,
+				5C622936261C0F18008600D0 /* MockRecognizer.swift in Sources */,
 				5C625799261AD68700423A40 /* APIService.swift in Sources */,
 				5CABCC4C2619957500AD30EC /* TextRecognitionDemoApp.swift in Sources */,
 			);
@@ -520,7 +577,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CABCC5E2619957E00AD30EC /* TextRecognitionDemoTests.swift in Sources */,
+				5C622948261C1554008600D0 /* StringExtensionTests.swift in Sources */,
+				5C622943261C14C0008600D0 /* ContentVMTests.swift in Sources */,
+				5C622966261C2FE4008600D0 /* InteractionsVMTests.swift in Sources */,
+				5C62293B261C1009008600D0 /* ModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +777,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L22459R7QW;
 				INFOPLIST_FILE = TextRecognitionDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -739,6 +800,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L22459R7QW;
 				INFOPLIST_FILE = TextRecognitionDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -760,6 +822,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L22459R7QW;
 				INFOPLIST_FILE = TextRecognitionDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -780,6 +843,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L22459R7QW;
 				INFOPLIST_FILE = TextRecognitionDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
