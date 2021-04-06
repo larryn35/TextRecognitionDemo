@@ -11,6 +11,7 @@ final class ContentViewModel: ObservableObject {
   @Published var inputImage: UIImage?
   @Published var image: Image?
   @Published var drugMatches = [String]()
+  @Published var cleanedResults = [String]()
 
   let recognizer: RecognizerServiceProtocol
   
@@ -18,20 +19,27 @@ final class ContentViewModel: ObservableObject {
     self.recognizer = recognizer
   }
   
+  var photoTabTitle: String {
+    image != nil ? "Photo taken" : "No photo taken yet"
+  }
+  
   // Load image from Camera into recognizer
   func loadImage() {
     guard let inputImage = inputImage else { return }
+    
+    image = Image(uiImage: inputImage)
+    
     recognizer.scanText(from: inputImage) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let results):
         let cleanedResults = self.cleanData(for: results)
+        self.cleanedResults = cleanedResults
         print("Results from recognizer:", cleanedResults)
         
         let matches = self.findMatches(results: cleanedResults)
-        print("Matches:", matches)
-        
         self.drugMatches = matches
+        print("Matches:", matches)        
         
       case .failure(let error):
         print(error)

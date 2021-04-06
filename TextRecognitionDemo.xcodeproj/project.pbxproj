@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CA32B882033E25D27BAA073 /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B850CCC2FD4C17BD1B934E /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework */; };
+		5C622902261BD3D4008600D0 /* InteractionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622901261BD3D4008600D0 /* InteractionsView.swift */; };
 		5C625791261AD61E00423A40 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C625790261AD61E00423A40 /* ImagePicker.swift */; };
 		5C625799261AD68700423A40 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C625798261AD68700423A40 /* APIService.swift */; };
 		5C62579E261ADD8E00423A40 /* RecognizerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62579D261ADD8E00423A40 /* RecognizerService.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		1EC41F51DB0609CE9E4CCEC7 /* Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5BD7FA7B95B125B7C3C91A8A /* Pods_TextRecognitionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextRecognitionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C622901261BD3D4008600D0 /* InteractionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsView.swift; sourceTree = "<group>"; };
 		5C625790261AD61E00423A40 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5C625798261AD68700423A40 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		5C62579D261ADD8E00423A40 /* RecognizerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerService.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				5CABCC4D2619957500AD30EC /* ContentView.swift */,
+				5C622901261BD3D4008600D0 /* InteractionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C622902261BD3D4008600D0 /* InteractionsView.swift in Sources */,
 				5C6257DC261AFA1100423A40 /* Data.swift in Sources */,
 				5C625791261AD61E00423A40 /* ImagePicker.swift in Sources */,
 				5CABCC4E2619957500AD30EC /* ContentView.swift in Sources */,
