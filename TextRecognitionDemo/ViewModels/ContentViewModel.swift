@@ -12,7 +12,9 @@ final class ContentViewModel: ObservableObject {
   @Published var image: Image?
   @Published var drugMatches = [String]()
   @Published var cleanedResults = [String]()
-
+  @Published var showErrorMessage = false
+  @Published var errorMessage = ""
+  
   let recognizer: RecognizerServiceProtocol
   
   init(recognizer: RecognizerServiceProtocol = RecognizerService()) {
@@ -25,7 +27,11 @@ final class ContentViewModel: ObservableObject {
   
   // Load image from Camera into recognizer
   func loadImage() {
-    guard let inputImage = inputImage else { return }
+    guard let inputImage = inputImage else {
+      errorMessage = "Failed to get picture from camera"
+      showErrorMessage = true
+      return
+    }
     
     image = Image(uiImage: inputImage)
     
@@ -38,13 +44,34 @@ final class ContentViewModel: ObservableObject {
         print("Results from recognizer:", cleanedResults)
         
         let matches = self.findMatches(results: cleanedResults)
-        self.drugMatches = matches
-        print("Matches:", matches)        
         
-      case .failure(let error):
-        print(error)
+        print("Matches:", matches)
+
+        for drug in matches {
+          if !self.drugMatches.contains(drug) {
+            self.drugMatches.append(drug)
+          }
+        }
+        
+      case .failure:
+        self.errorMessage = "Failed to process image"
+        self.showErrorMessage = true
+        self.drugMatches = []
       }
     }
+  }
+  
+  func clearList() {
+    drugMatches = []
+    inputImage = nil
+    image = nil
+    drugMatches = []
+    cleanedResults = []
+  }
+  
+  func resetErrors() {
+    showErrorMessage = false
+    errorMessage = ""
   }
 }
 

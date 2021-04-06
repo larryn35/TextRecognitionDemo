@@ -50,6 +50,12 @@ struct ContentView: View {
               Label("Check interactions", systemImage: "text.badge.checkmark")
             }
             .disabled(viewModel.drugMatches.count < 2) // Require 2 or more drug matches to perform interactions check
+            Button {
+              viewModel.clearList()
+            } label: {
+              Label("Clear list", systemImage: "xmark.circle.fill")
+                .foregroundColor(.red)
+            }
           }
       )
     }
@@ -58,7 +64,7 @@ struct ContentView: View {
       case .camera:
         ImagePicker(image: $viewModel.inputImage)
       case .interactions:
-        InteractionsView()
+        InteractionsView(drugMatches: viewModel.drugMatches)
       }
     }
   }
@@ -84,6 +90,13 @@ struct ContentView: View {
         .bold()
         .padding()
       
+      if viewModel.showErrorMessage {
+        Text(viewModel.errorMessage)
+          .bold()
+          .padding()
+          .foregroundColor(.red)
+      }
+      
       List(viewModel.cleanedResults, id: \.self) { drug in
         Text(drug)
       }
@@ -105,6 +118,10 @@ struct ContentView: View {
           .frame(minHeight: .none, maxHeight: .infinity, alignment: .top)
           .padding()
       } else {
+        Text(viewModel.errorMessage)
+          .bold()
+          .padding()
+          .foregroundColor(.red)
         Spacer()
       }
     }
@@ -112,6 +129,8 @@ struct ContentView: View {
   
   // MARK: - Functions
   private func sheetAction() {
+    viewModel.resetErrors()
+    
     // Trigger load image on dismiss only if sheet was an ImagePicker
     if selectedSheetType == .camera {
       viewModel.loadImage()
