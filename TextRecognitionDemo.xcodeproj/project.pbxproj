@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1CA32B882033E25D27BAA073 /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B850CCC2FD4C17BD1B934E /* Pods_TextRecognitionDemo_TextRecognitionDemoUITests.framework */; };
+		5C3A3E31261D548100CD0877 /* Drug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A3E30261D548100CD0877 /* Drug.swift */; };
+		5C3A3E3C261D686100CD0877 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A3E3B261D686100CD0877 /* HelperFunctions.swift */; };
+		5C3A3E41261D6A0200CD0877 /* MockCombineHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A3E40261D6A0200CD0877 /* MockCombineHelper.swift */; };
 		5C622902261BD3D4008600D0 /* InteractionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622901261BD3D4008600D0 /* InteractionsView.swift */; };
 		5C622907261BE042008600D0 /* InteractionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C622906261BE042008600D0 /* InteractionsViewModel.swift */; };
 		5C622910261BE527008600D0 /* RxCui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62290F261BE527008600D0 /* RxCui.swift */; };
@@ -54,6 +57,9 @@
 /* Begin PBXFileReference section */
 		1EC41F51DB0609CE9E4CCEC7 /* Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-TextRecognitionDemo-TextRecognitionDemoUITests/Pods-TextRecognitionDemo-TextRecognitionDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5BD7FA7B95B125B7C3C91A8A /* Pods_TextRecognitionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextRecognitionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C3A3E30261D548100CD0877 /* Drug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drug.swift; sourceTree = "<group>"; };
+		5C3A3E3B261D686100CD0877 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		5C3A3E40261D6A0200CD0877 /* MockCombineHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCombineHelper.swift; sourceTree = "<group>"; };
 		5C622901261BD3D4008600D0 /* InteractionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsView.swift; sourceTree = "<group>"; };
 		5C622906261BE042008600D0 /* InteractionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsViewModel.swift; sourceTree = "<group>"; };
 		5C62290F261BE527008600D0 /* RxCui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCui.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 		5C62290B261BE47F008600D0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5C3A3E30261D548100CD0877 /* Drug.swift */,
 				5C62290F261BE527008600D0 /* RxCui.swift */,
 				5C622914261BE820008600D0 /* DrugInteraction.swift */,
 			);
@@ -152,6 +159,7 @@
 				5C622928261BED59008600D0 /* MockData.swift */,
 				5C622930261C0D31008600D0 /* MockAPIService.swift */,
 				5C622935261C0F18008600D0 /* MockRecognizer.swift */,
+				5C3A3E40261D6A0200CD0877 /* MockCombineHelper.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -180,6 +188,7 @@
 			children = (
 				5C625790261AD61E00423A40 /* ImagePicker.swift */,
 				5C6257E0261AFE2300423A40 /* String+DataScrubing.swift */,
+				5C3A3E3B261D686100CD0877 /* HelperFunctions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -560,6 +569,7 @@
 				5C625791261AD61E00423A40 /* ImagePicker.swift in Sources */,
 				5CABCC4E2619957500AD30EC /* ContentView.swift in Sources */,
 				5C6257C1261AE78100423A40 /* ContentViewModel.swift in Sources */,
+				5C3A3E31261D548100CD0877 /* Drug.swift in Sources */,
 				5C62579E261ADD8E00423A40 /* RecognizerService.swift in Sources */,
 				5C622915261BE820008600D0 /* DrugInteraction.swift in Sources */,
 				5C6257E1261AFE2400423A40 /* String+DataScrubing.swift in Sources */,
@@ -567,9 +577,11 @@
 				5C622910261BE527008600D0 /* RxCui.swift in Sources */,
 				5C622931261C0D31008600D0 /* MockAPIService.swift in Sources */,
 				5C622929261BED59008600D0 /* MockData.swift in Sources */,
+				5C3A3E3C261D686100CD0877 /* HelperFunctions.swift in Sources */,
 				5C622936261C0F18008600D0 /* MockRecognizer.swift in Sources */,
 				5C625799261AD68700423A40 /* APIService.swift in Sources */,
 				5CABCC4C2619957500AD30EC /* TextRecognitionDemoApp.swift in Sources */,
+				5C3A3E41261D6A0200CD0877 /* MockCombineHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

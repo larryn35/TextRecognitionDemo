@@ -80,7 +80,7 @@ struct ContentView: View {
         .padding()
       
       List(viewModel.drugMatches, id: \.self) { drug in
-        Text(drug)
+        Text(drug.generic)
       }
       .listStyle(InsetGroupedListStyle())
     }

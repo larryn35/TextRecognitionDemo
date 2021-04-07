@@ -6,27 +6,67 @@
 //
 
 import Foundation
-import Combine
 
 final class InteractionsViewModel: ObservableObject {
   @Published var interactions = [Interaction]()
   @Published var isSearchComplete = false
   @Published var errorMessage = ""
   @Published var showErrorMessage = false
+  @Published var drugsChecked = 0
   
-  var apiService: APIServiceProtocol
-  var drugMatches: [String]
-  var cancellables = Set<AnyCancellable>()
-  var filteredRequests = [AnyPublisher<String, Never>]()
-
+  let apiService: APIServiceProtocol
+  var combineHelper: CombineHelperProtocol
+  var drugMatches: [Drug]
+  
   init(apiService: APIServiceProtocol = APIService(),
-       drugMatches: [String]) {
+       combineHelper: CombineHelperProtocol = CombineHelper(),
+       drugMatches: [Drug]) {
     self.apiService = apiService
     self.drugMatches = drugMatches
+    self.combineHelper = combineHelper
+  }
+  
+  var drugsCheckedText: String {
+    "Drugs checked: \(drugsChecked)"
   }
 }
 
-// MARK: - Construct URLs
+// MARK:  Error handling
+
+extension InteractionsViewModel {
+  
+  private enum InteractionsError {
+    case missingDrug(count: Int)
+    case mergeRequestError
+    case invalidURL
+    case jsonError
+  }
+  
+  private func updateErrorMessage(for errorType: InteractionsError) {
+    switch errorType {
+    case .missingDrug(count: let count):
+      if count > 1 {
+        errorMessage = "Important: \(count) drugs from the list were not included in the check due to an error. This list may not include all possible interactions."
+      } else {
+        errorMessage = "Important: A drug from the list was not included in the check due to an error. This list may not include all possible interactions."
+      }
+    case .mergeRequestError:
+      errorMessage = "Error: Unable to get information for drugs"
+      
+    case .invalidURL:
+      errorMessage = "Error: URL is invalid"
+      
+    case .jsonError:
+      errorMessage = "Error: Unable to get interactions from URL"
+      interactions = []
+    }
+    
+    showErrorMessage = true
+    isSearchComplete = true
+  }
+}
+
+// MARK: - Construct URL
 
 extension InteractionsViewModel {
   
@@ -41,68 +81,45 @@ extension InteractionsViewModel {
       components.queryItems = [
         URLQueryItem(name: "rxcuis", value: joinedIDs),
       ]
-      
       return components.url
     }
     return interactionsURL
   }
-  
-  func constructRxCuiURL(for drug: String) -> URL? {
-    var rxCuiURL: URL? {
-      var components = URLComponents()
-      components.scheme = "https"
-      components.host = "rxnav.nlm.nih.gov"
-      components.path = "/REST/rxcui.json"
-      components.queryItems = [
-        URLQueryItem(name: "name", value: drug),
-        URLQueryItem(name: "search", value: "1")
-      ]
-      
-      return components.url
-    }
-    return rxCuiURL
-  }
 }
-  
+
 // MARK: - Fetch data
 
 extension InteractionsViewModel {
   
-  func fetchDrugIDsAndInteractions() {
-  
-    let urls = drugMatches.map { constructRxCuiURL(for: $0) }
+  /// Merges RxcCui requests for drugs in the drug matches list, combines the IDs
+  func fetchInteractions() {
+    let drugMatchesCount = drugMatches.count
     
-    guard !urls.contains(nil) else {
-      errorMessage = "Error constructing RxCui URL for drug(s)"
-      showErrorMessage = true
-      isSearchComplete = true
-      return
-    }
+    let urls = drugMatches.compactMap { $0.rxCuiURL }
+    let requests = urls.map { combineHelper.createIDRequest(fromURL: $0) }
     
-    let requests = urls.map {
-      apiService.createIDRequest(url: $0!)
-    }
-
-    apiService.mergeRequests(requests) { [weak self] (result: Result<[String], APIError>) in
-      switch result {
-      case .success(let ids):
-        self?.fetchInteractions(for: ids)
-      case .failure(let error):
-        print(error.localizedDescription)
-        self?.errorMessage = "Error merging requests"
-        self?.showErrorMessage = true
-        self?.isSearchComplete = true
+    combineHelper.mergeRequests(requests) { [weak self] drugIDs in
+      if drugIDs.isEmpty {
+        self?.updateErrorMessage(for: .mergeRequestError)
+        return
       }
+      
+      self?.drugsChecked = drugIDs.count
+      
+      if drugMatchesCount > drugIDs.count {
+        let drugsMissing = drugMatchesCount - drugIDs.count
+        self?.updateErrorMessage(for: .missingDrug(count: drugsMissing))
+      }
+      
+      self?.fetchJSON(for: drugIDs)
     }
   }
   
-  private func fetchInteractions(for ids: [String]) {
+  private func fetchJSON(for ids: [String]) {
     let url = constructInteractionsURL(with: ids)
     
     guard let wrappedURL = url else {
-      errorMessage = "Error constructing interactions URL"
-      showErrorMessage = true
-      isSearchComplete = true
+      updateErrorMessage(for: .invalidURL)
       return
     }
     
@@ -115,10 +132,7 @@ extension InteractionsViewModel {
         self?.isSearchComplete = true
       case .failure(let error):
         print(error.localizedDescription)
-        self?.errorMessage = "Error checking for interactions"
-        self?.showErrorMessage = true
-        self?.interactions = []
-        self?.isSearchComplete = true
+        self?.updateErrorMessage(for: .jsonError)
       }
     }
   }

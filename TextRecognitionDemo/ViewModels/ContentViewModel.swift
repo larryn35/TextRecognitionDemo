@@ -9,7 +9,7 @@ import SwiftUI
 
 final class ContentViewModel: ObservableObject {
   @Published var image: Image?
-  @Published var drugMatches = [String]()
+  @Published var drugMatches = [Drug]()
   @Published var cleanedResults = [String]()
   @Published var showErrorMessage = false
   @Published var errorMessage = ""
@@ -38,14 +38,11 @@ final class ContentViewModel: ObservableObject {
       guard let self = self else { return }
       switch result {
       case .success(let results):
-        let cleanedResults = self.cleanData(for: results)
-        self.cleanedResults = cleanedResults
-        print("Results from recognizer:", cleanedResults)
+        let cleanedData = self.cleanData(for: results)
+        self.cleanedResults = cleanedData
         
-        let matches = self.findMatches(results: cleanedResults)
+        let matches = self.findMatches(results: cleanedData)
         
-        print("Matches:", matches)
-
         for drug in matches {
           if !self.drugMatches.contains(drug) {
             self.drugMatches.append(drug)
@@ -62,9 +59,8 @@ final class ContentViewModel: ObservableObject {
   
   func clearList() {
     drugMatches = []
-    image = nil
-    drugMatches = []
     cleanedResults = []
+    image = nil
   }
   
   func resetErrors() {
@@ -89,16 +85,15 @@ extension ContentViewModel {
   /// Matches results to drug bank
   /// - Parameter results: An array of cleaned strings from the recognizer
   /// - Returns: A sorted array of strings representing drugs from the drug bank whose prefix is equal to a string from the results
-  private func findMatches(results: [String]) -> [String] {
-    var drugMatchesSet = Set<String>()
+  private func findMatches(results: [String]) -> [Drug] {
+    var drugMatchesSet = Set<Drug>()
     for drug in Data.sampleDrugBank {
       for result in results {
-        if drug.startsWith(result) {
+        if drug.generic.startsWith(result) {
           drugMatchesSet.insert(drug)
         }
       }
     }
-    
     let sortedArray = Array(drugMatchesSet).sorted()
     return sortedArray
   }

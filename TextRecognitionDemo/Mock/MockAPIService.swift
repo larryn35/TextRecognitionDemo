@@ -10,11 +10,9 @@ import Combine
 
 final class MockAPIService: APIServiceProtocol {
   let getJSONCompletedWithFailure: Bool
-  let mergeRequestCompleteWithFailure: Bool
   
-  init(getJSONCompletedWithFailure: Bool = false, mergeRequestCompleteWithFailure: Bool = false) {
+  init(getJSONCompletedWithFailure: Bool = false) {
     self.getJSONCompletedWithFailure = getJSONCompletedWithFailure
-    self.mergeRequestCompleteWithFailure = mergeRequestCompleteWithFailure
   }
   
   func getJSON<T>(url: URL, completion: @escaping (Result<T, APIError>) -> Void) where T : Decodable {
@@ -27,23 +25,4 @@ final class MockAPIService: APIServiceProtocol {
 
     }
   }
-  
-  func createIDRequest(url: URL) -> AnyPublisher<String, Never> {
-    Just("36437")
-      .eraseToAnyPublisher()
-  }
-  
-  func mergeRequests(_ requests: [AnyPublisher<String, Never>], completion: @escaping (Result<[String], APIError>) -> Void) {
-    if mergeRequestCompleteWithFailure {
-      completion(.failure(.error("Failed to merge requests")))
-    } else {
-      completion(.success([
-        "4493",
-        "321988",
-        "36567"
-      ]))
-    }
-  }
-  
-  
 }

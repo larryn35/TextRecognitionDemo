@@ -18,6 +18,12 @@ class ModelTests: XCTestCase {
     XCTAssertEqual(drugID.id, "36437", "Parsed result did not return 36437 for RxCui")
   }
   
+  func testRxCuiURLBuilder() {
+    let drug = Drug(generic: "lisinopril/hydrochlorothiazide")
+    let url = drug.rxCuiURL
+    XCTAssertEqual(url?.absoluteString, MockData.rxCuiURL, "RxCuiURL not constructed correctly")
+  }
+  
   func testParsingJSONIsWorkingForInteractions() throws {
     let mockInteractionsJSON = MockData.interactionsJSON.data(using: .utf8)!
     

@@ -10,37 +10,42 @@ import SwiftUI
 struct InteractionsView: View {
   @ObservedObject private var viewModel: InteractionsViewModel
   
-  init(drugMatches: [String]) {
+  init(drugMatches: [Drug]) {
     viewModel = InteractionsViewModel(drugMatches: drugMatches)
-    viewModel.fetchDrugIDsAndInteractions()
   }
   
   var body: some View {
-    if viewModel.isSearchComplete {
-      Form {
-        Section(header: Text("Interactions")) {
-          ForEach(viewModel.interactions, id: \.self) { interaction in
-            Text(interaction.description)
+    NavigationView {
+    VStack {
+      if viewModel.isSearchComplete {
+        Form {
+          Section(header: Text(viewModel.drugsCheckedText)) {
+            ForEach(viewModel.interactions, id: \.self) { interaction in
+              Text(interaction.description)
+            }
+          }
+          
+          if viewModel.showErrorMessage {
+            Section {
+              Text(viewModel.errorMessage)
+                .fontWeight(.semibold)
+                .foregroundColor(.red)
+            }
           }
         }
-        
-        if viewModel.showErrorMessage {
-          Section(header: Text("Error")) {
-            Text(viewModel.errorMessage)
-              .fontWeight(.semibold)
-              .foregroundColor(.red)
-          }
-        }
+      } else {
+        Text("Interaction check in progress")
+          .padding()
       }
-    } else {
-      Text("Interaction check in progress")
-        .padding()
     }
+    .navigationTitle("Interactions")
+    }
+    .onAppear(perform: viewModel.fetchInteractions)
   }
 }
 
 struct InteractionsView_Previews: PreviewProvider {
   static var previews: some View {
-    InteractionsView(drugMatches: [""])
+    InteractionsView(drugMatches: [Drug(generic: "Lisinopril")])
   }
 }

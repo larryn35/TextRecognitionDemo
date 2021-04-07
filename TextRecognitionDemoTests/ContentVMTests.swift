@@ -44,10 +44,10 @@ class ContentVMTests: XCTestCase {
     
     // Drug matches after loading image - should be [Citalopram, Ibuprofen, Citalopram, Ibuprofen]
     XCTAssertEqual(viewModel.drugMatches.count, 4, "Drug matches count does not equal 4")
-    XCTAssertEqual(viewModel.drugMatches[0], "Citalopram", "Citalopram not matched from raw text")
-    XCTAssertEqual(viewModel.drugMatches[1], "Ibuprofen", "Ibuprofen not matched from raw text")
-    XCTAssertEqual(viewModel.drugMatches[2], "Metformin", "Metformin not matched from raw text")
-    XCTAssertEqual(viewModel.drugMatches[3], "Simvastatin", "Simvastatin not matched from raw text")
+    XCTAssertEqual(viewModel.drugMatches[0].generic, "Citalopram", "Citalopram not matched from raw text")
+    XCTAssertEqual(viewModel.drugMatches[1].generic, "Ibuprofen", "Ibuprofen not matched from raw text")
+    XCTAssertEqual(viewModel.drugMatches[2].generic, "Metformin", "Metformin not matched from raw text")
+    XCTAssertEqual(viewModel.drugMatches[3].generic, "Simvastatin", "Simvastatin not matched from raw text")
   }
   
   func testErrorsWhenRecognizerFails() {
