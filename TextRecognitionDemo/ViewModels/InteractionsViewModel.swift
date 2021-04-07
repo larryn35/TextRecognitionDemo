@@ -91,7 +91,6 @@ extension InteractionsViewModel {
 
 extension InteractionsViewModel {
   
-  /// Merges RxcCui requests for drugs in the drug matches list, combines the IDs
   func fetchInteractions() {
     let drugMatchesCount = drugMatches.count
     

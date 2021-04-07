@@ -1,5 +1,5 @@
 //
-//  Data.swift
+//  Drugbank.swift
 //  TextRecognitionDemo
 //
 //  Created by Larry N on 4/5/21.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Data {
-  static let sampleDrugBank = [
+struct Drugbank {
+  static let drugs = [
     Drug(generic: "Losartan"),
     Drug(generic: "Lisinopril"),
     Drug(generic: "Simvastatin"),

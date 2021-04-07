@@ -69,6 +69,8 @@ final class ContentViewModel: ObservableObject {
   }
 }
 
+// MARK:  Data processing
+
 extension ContentViewModel {
   /// Clean results returned from text recognizer.
   /// - Parameters:
@@ -81,13 +83,12 @@ extension ContentViewModel {
     return meetsCharacterLimit
   }
   
-  
   /// Matches results to drug bank
   /// - Parameter results: An array of cleaned strings from the recognizer
   /// - Returns: A sorted array of strings representing drugs from the drug bank whose prefix is equal to a string from the results
   private func findMatches(results: [String]) -> [Drug] {
     var drugMatchesSet = Set<Drug>()
-    for drug in Data.sampleDrugBank {
+    for drug in Drugbank.drugs {
       for result in results {
         if drug.generic.startsWith(result) {
           drugMatchesSet.insert(drug)

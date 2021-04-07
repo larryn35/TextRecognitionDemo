@@ -26,7 +26,7 @@
 		5C625799261AD68700423A40 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C625798261AD68700423A40 /* APIService.swift */; };
 		5C62579E261ADD8E00423A40 /* RecognizerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62579D261ADD8E00423A40 /* RecognizerService.swift */; };
 		5C6257C1261AE78100423A40 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257C0261AE78100423A40 /* ContentViewModel.swift */; };
-		5C6257DC261AFA1100423A40 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257DB261AFA1100423A40 /* Data.swift */; };
+		5C6257DC261AFA1100423A40 /* Drugbank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257DB261AFA1100423A40 /* Drugbank.swift */; };
 		5C6257E1261AFE2400423A40 /* String+DataScrubing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257E0261AFE2300423A40 /* String+DataScrubing.swift */; };
 		5CABCC4C2619957500AD30EC /* TextRecognitionDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC4B2619957500AD30EC /* TextRecognitionDemoApp.swift */; };
 		5CABCC4E2619957500AD30EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CABCC4D2619957500AD30EC /* ContentView.swift */; };
@@ -75,7 +75,7 @@
 		5C625798261AD68700423A40 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		5C62579D261ADD8E00423A40 /* RecognizerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerService.swift; sourceTree = "<group>"; };
 		5C6257C0261AE78100423A40 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		5C6257DB261AFA1100423A40 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		5C6257DB261AFA1100423A40 /* Drugbank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drugbank.swift; sourceTree = "<group>"; };
 		5C6257E0261AFE2300423A40 /* String+DataScrubing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DataScrubing.swift"; sourceTree = "<group>"; };
 		5CABCC482619957500AD30EC /* TextRecognitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextRecognitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CABCC4B2619957500AD30EC /* TextRecognitionDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionDemoApp.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		5C622919261BEC45008600D0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				5C6257DB261AFA1100423A40 /* Data.swift */,
+				5C6257DB261AFA1100423A40 /* Drugbank.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -565,7 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C622902261BD3D4008600D0 /* InteractionsView.swift in Sources */,
-				5C6257DC261AFA1100423A40 /* Data.swift in Sources */,
+				5C6257DC261AFA1100423A40 /* Drugbank.swift in Sources */,
 				5C625791261AD61E00423A40 /* ImagePicker.swift in Sources */,
 				5CABCC4E2619957500AD30EC /* ContentView.swift in Sources */,
 				5C6257C1261AE78100423A40 /* ContentViewModel.swift in Sources */,

@@ -8,6 +8,12 @@
 import Foundation
 
 struct MockData {
+  static let fiveDrugMatches = [Drug(generic: "1"),
+                                Drug(generic: "2"),
+                                Drug(generic: "3"),
+                                Drug(generic: "4"),
+                                Drug(generic: "5")]
+  
   static let rawTextFromRecognizer = ["onsistent", "power", "required", "by", "individual", "states).", "source.", "Keep", "temperature", "logs", "for", "3", "years", "(or", "VACCINE", "STORAGE", "REQUIREMENTS", "Mest", "vaccines", "are", "stored", "in", "the", "refrigerator", "(between", "36°F", "M", "and", "46°F;,", "or", "2°C", "and", "8°C).", "Vaccines", "that", "should", "be", "stored", "in", "the", "freezer", "(between", "58°F", "and", "+5°F,", "or", "-50°C", "and", "-15°c)", "include:", "varicella", "vaccine,", "Zostavax,", "MMRV", "and", "oral", "cholera", "vaccine.", "s", "MMR", "is", "stored", "either", "in", "the", "refrigerator", "or", "freezer.", "ADC", "SE190-23", "11", "Rx", "only", "AGTICE", "Cs", "va", "af", "lyophllnd", "powder", "and", "ad", "of", "d", "g", "od", "2013-2014", "No", "P", "Ped", "SC", "BEPORE", "UE", "Zoster", "Vaccine", "Recombinant,", "Adjuvanted", "SHINGRIX", "Cartarts", "(10", "doues", "of", "NO", "10Vde", "ctrng", "Aant", "19", "Vals", "cortaring", "yogid", "I", "oner", "afs5r", "ar", "ecOrehA"]
   
   static let rxCuiURL = "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=lisinopril/hydrochlorothiazide&search=1"

@@ -45,12 +45,14 @@ struct ContentView: View {
             } label: {
               Label("Take photo", systemImage: "camera")
             }
+            
             Button {
               selectedSheetType = .interactions
             } label: {
               Label("Check interactions", systemImage: "text.badge.checkmark")
             }
             .disabled(viewModel.drugMatches.count < 2) // Require 2 or more drug matches to perform interactions check
+            
             Button {
               viewModel.clearList()
               inputImage = nil
@@ -79,8 +81,11 @@ struct ContentView: View {
         .bold()
         .padding()
       
-      List(viewModel.drugMatches, id: \.self) { drug in
-        Text(drug.generic)
+      List {
+        ForEach(viewModel.drugMatches, id: \.self) { drug in
+          Text(drug.generic)
+        }
+        .onDelete(perform: removeDrug)
       }
       .listStyle(InsetGroupedListStyle())
     }
@@ -99,8 +104,8 @@ struct ContentView: View {
           .foregroundColor(.red)
       }
       
-      List(viewModel.cleanedResults, id: \.self) { drug in
-        Text(drug)
+      List(viewModel.cleanedResults, id: \.self) { text in
+        Text(text)
       }
       .listStyle(InsetGroupedListStyle())
     }
@@ -137,6 +142,10 @@ struct ContentView: View {
     if selectedSheetType == .camera {
       viewModel.loadImage(inputImage)
     }
+  }
+  
+  private func removeDrug(at offSet: IndexSet) {
+    viewModel.drugMatches.remove(atOffsets: offSet)
   }
 }
 
