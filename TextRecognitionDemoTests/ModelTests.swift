@@ -57,4 +57,20 @@ class ModelTests: XCTestCase {
                    thirdInteractionDescription,
                    "Parsed results did not return correct description for third interaction")
   }
+  
+  func testParsingJSONIsWorkingForJSONWithNoInteractions() throws {
+    let mockNoInteractionsJSON = MockData.noInteractionsJSON.data(using: .utf8)!
+    
+    let interactionsContainer = try JSONDecoder().decode(InteractionsContainer.self,
+                                                         from: mockNoInteractionsJSON)
+    
+    XCTAssertNotNil(interactionsContainer,
+                    "interactionsContainer returned nil")
+    
+    XCTAssertNil(interactionsContainer.fullInteractionTypeGroup,
+                    "interactionsContainer did not return nil")
+    
+    XCTAssertNotNil(interactionsContainer.nlmDisclaimer,
+                    "interactionsContainer should contain disclaimer")
+  }
 }

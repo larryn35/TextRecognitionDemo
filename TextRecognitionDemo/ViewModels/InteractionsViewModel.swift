@@ -11,6 +11,7 @@ import Combine
 final class InteractionsViewModel: ObservableObject {
   @Published var interactions = [Interaction]()
   @Published var isSearchComplete = false
+  @Published var drugsDoNotInteract = false
   @Published var showInteractionsMessage = false
   @Published var interactionsMessage = ""
   @Published var drugsChecked = 0
@@ -31,12 +32,15 @@ final class InteractionsViewModel: ObservableObject {
   var drugsCheckedText: String {
     let missedDrugsSet = Set(missedDrugs)
     var drugMatchesSet = Set(drugMatches.map { $0.generic })
+    
+    // Removes missed drugs from drugMatches
     drugMatchesSet.formSymmetricDifference(missedDrugsSet)
-    let drugsCheckedArray = Array(drugMatchesSet)
-    if drugsCheckedArray.isEmpty {
+    
+    if drugMatchesSet.isEmpty {
       return "No drugs checked"
     } else {
-      return drugsCheckedArray.joined(separator: ", ")
+      let sortedArray = Array(drugMatchesSet).sorted()
+      return sortedArray.joined(separator: ", ")
     }
   }
 }
@@ -122,17 +126,23 @@ extension InteractionsViewModel {
     apiService.getJSON(url: wrappedURL) { [weak self] (result: Result<InteractionsContainer, APIError>) in
       switch result {
       case .success(let fetched):
-        guard let fetchedInteractions = fetched.interactions else { return }
+        guard let fetchedInteractions = fetched.interactions else {
+          
+          // Drugs do not interact
+          self?.drugsDoNotInteract = true
+          self?.isSearchComplete = true
+          return
+        }
+        
         let interactionsSet = Set(fetchedInteractions)
         self?.interactions = Array(interactionsSet)
         self?.isSearchComplete = true
+        
       case .failure(let error):
         switch error {
         case .error(let message):
           print(message)
-          
-          // Drugs that do not interact with each other count as error, since JSON cannot decode "missing" data
-          self?.updateInteractionsMessage(for: .jsonRequestCompleted)
+          self?.updateInteractionsMessage(for: .jsonError)
         }
       }
     }
@@ -143,15 +153,15 @@ extension InteractionsViewModel {
 
 extension InteractionsViewModel {
   
-  private enum InteractionsError {
+  private enum InteractionsOutcome {
     case missingDrug(count: Int)
     case mergeRequestError
     case invalidURL
-    case jsonRequestCompleted
+    case jsonError
   }
   
-  private func updateInteractionsMessage(for errorType: InteractionsError) {
-    switch errorType {
+  private func updateInteractionsMessage(for outcome: InteractionsOutcome) {
+    switch outcome {
     case .missingDrug(count: let count):
       interactionsMessage = "Unable to retrieve information for \(count) drug(s) from the list. This list may not include all possible interactions."
       
@@ -161,20 +171,12 @@ extension InteractionsViewModel {
     case .invalidURL:
       interactionsMessage = "Error: URL is invalid"
       
-    case .jsonRequestCompleted:
-      // Request finished successfully and drugs have no interactions among them
-      if drugsChecked > 0 {
-        print("No interactions found")
-        // Failed to fetch interactions
-      } else {
+    case .jsonError:
         interactionsMessage = "Error: Unable to get interactions from URL"
         interactions = []
-      }
     }
     
-    if !interactionsMessage.isEmpty {
-      showInteractionsMessage = true
-    }
+    showInteractionsMessage = true
     isSearchComplete = true
   }
 }

@@ -20,7 +20,7 @@ struct InteractionsView: View {
         if viewModel.isSearchComplete {
           Form {
             Section {
-              if viewModel.drugsChecked > 0 && viewModel.interactions.isEmpty {
+              if viewModel.drugsDoNotInteract {
                 Text("No interactions found")
               }
               

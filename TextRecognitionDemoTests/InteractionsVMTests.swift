@@ -19,7 +19,7 @@ class InteractionsVMTests: XCTestCase {
                    "InteractionsURL not constructed correctly")
   }
   
-  func testInteractionsPopulatedWithSuccessfulFetch() throws {
+  func testInteractionsPopulatedWithSuccessfulFetch() {
     let mockApiService = MockAPIService()
     let mockCombineHelper = MockCombineHelper()
     let viewModel = InteractionsViewModel(apiService: mockApiService,
@@ -43,7 +43,7 @@ class InteractionsVMTests: XCTestCase {
                    MockData.extractedDescriptions.sorted())
   }
   
-  func testSearchCompleteSetToTrueAfterSuccessfulFetch() throws {
+  func testSearchCompleteSetToTrueAfterSuccessfulFetch() {
     let mockApiService = MockAPIService()
     let mockCombineHelper = MockCombineHelper()
     let viewModel = InteractionsViewModel(apiService: mockApiService,
@@ -58,6 +58,44 @@ class InteractionsVMTests: XCTestCase {
     viewModel.fetchInteractions()
     
     // isSearchComplete after fetch
+    XCTAssertTrue(viewModel.isSearchComplete,
+                  "isSearchComplete not set to true after fetch")
+  }
+  
+  func testNoInteractionsMessageIsDisplayedAfterCheckingDrugsThatDontInteract() {
+    let mockApiService = MockAPIService(interactionsJSON: MockData.noInteractionsJSON)
+    let mockCombineHelper = MockCombineHelper()
+    let viewModel = InteractionsViewModel(apiService: mockApiService,
+                                          combineHelper: mockCombineHelper,
+                                          drugMatches: MockData.fiveDrugMatches)
+    
+    // drugsDoNotInteract before fetch
+    XCTAssertFalse(viewModel.drugsDoNotInteract,
+                   "showInteractionsMessage not set to false at start")
+    
+    // Fetch ends with no interactions found
+    viewModel.fetchInteractions()
+    
+    // drugsDoNotInteract after fetch
+    XCTAssertTrue(viewModel.drugsDoNotInteract,
+                  "drugsDoNotInteract not set to true after fetch")
+  }
+  
+  func testSearchCompleteSetToTrueAfterCheckingDrugsThatDontInteract() throws {
+    let mockApiService = MockAPIService(interactionsJSON: MockData.noInteractionsJSON)
+    let mockCombineHelper = MockCombineHelper()
+    let viewModel = InteractionsViewModel(apiService: mockApiService,
+                                          combineHelper: mockCombineHelper,
+                                          drugMatches: MockData.fiveDrugMatches)
+    
+    // drugsDoNotInteract before fetch
+    XCTAssertFalse(viewModel.isSearchComplete,
+                   "isSearchComplete not set to false at start")
+    
+    // Fetch ends with no interactions found
+    viewModel.fetchInteractions()
+    
+    // drugsDoNotInteract after fetch
     XCTAssertTrue(viewModel.isSearchComplete,
                   "isSearchComplete not set to true after fetch")
   }
@@ -80,7 +118,7 @@ class InteractionsVMTests: XCTestCase {
     
     // Error status following fetch
     XCTAssertEqual(viewModel.interactionsMessage,
-                   "Important: A drug from the list was not included in the check due to an error. This list may not include all possible interactions.",
+                   "Unable to retrieve information for 1 drug(s) from the list. This list may not include all possible interactions.",
                    "Error message not set correctly after merge failure")
     
     XCTAssertTrue(viewModel.showInteractionsMessage,
@@ -105,7 +143,7 @@ class InteractionsVMTests: XCTestCase {
     
     // Error status following fetch
     XCTAssertEqual(viewModel.interactionsMessage,
-                   "Important: 2 drugs from the list were not included in the check due to an error. This list may not include all possible interactions.",
+                   "Unable to retrieve information for 2 drug(s) from the list. This list may not include all possible interactions.",
                    "Error message not set correctly after merge failure")
     
     XCTAssertTrue(viewModel.showInteractionsMessage,
@@ -188,6 +226,7 @@ class InteractionsVMTests: XCTestCase {
     
     // Fetch ending in getJSON failure
     viewModel.fetchInteractions()
+    viewModel.drugsChecked = 0
     
     // Error status following fetch
     XCTAssertEqual(viewModel.interactionsMessage,

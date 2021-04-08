@@ -197,4 +197,20 @@ struct MockData {
   """
   
   static let extractedDescriptions = ["The serum concentration of Fluoxetine can be increased when it is combined with Simvastatin.", "The risk or severity of serotonin syndrome can be increased when Fluoxetine is combined with Escitalopram.", "The serum concentration of Simvastatin can be increased when it is combined with Escitalopram."]
+  
+  
+  static let noInteractionsJSON = """
+    {
+      "nlmDisclaimer": "It is not the intention of NLM to provide specific medical advice, but rather to provide users with information to better understand their health and their medications. NLM urges you to consult with a qualified physician for advice about medications.",
+      "userInput": {
+        "sources": [
+          ""
+        ],
+        "rxcuis": [
+          "6809",
+          "52175"
+        ]
+      }
+    }
+  """
 }

@@ -8,7 +8,8 @@
 import Foundation
 
 struct InteractionsContainer: Decodable {
-  let fullInteractionTypeGroup: [FullInteractionTypeGroup]
+  let fullInteractionTypeGroup: [FullInteractionTypeGroup]?
+  let nlmDisclaimer: String
 }
 
 struct FullInteractionTypeGroup: Decodable {
@@ -27,7 +28,7 @@ extension InteractionsContainer {
   var interactions: [Interaction]? {
     var pairs = [Interaction]()
         
-    guard let typeGroup = self.fullInteractionTypeGroup.first else { return nil }
+    guard let typeGroup = self.fullInteractionTypeGroup?.first else { return nil }
     for types in typeGroup.fullInteractionType {
       guard let interactionPair = types.interactionPair.first else { return nil }
       pairs.append(interactionPair)
