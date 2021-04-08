@@ -9,15 +9,12 @@ import Foundation
 import Combine
 
 struct MockCombineHelper: CombineHelperProtocol {
+  var idErrors: [String] = []
+  
   var completionArray: [String]
   
   init(completionArray: [String] = ["4493","321988","36567"]) {
     self.completionArray = completionArray
-  }
-  
-  func createIDRequest(fromURL: URL) -> AnyPublisher<String, Never> {
-    Just("36437")
-      .eraseToAnyPublisher()
   }
   
   mutating func mergeRequests(_ requests: [AnyPublisher<String, Never>], completion: @escaping ([String]) -> Void) {

@@ -26,7 +26,11 @@ struct Drugbank {
     Drug(generic: "Amlodipine"),
     
     // Test Drugs (Invalid drugs for RxCui request)
-    Drug(generic: "XLosartan"),
-    Drug(generic: "XLisinopril")
+    // Should appear in excluded drug section of InteractionsView along with warning
+//    Drug(generic: "InvalidDrug"),
+//    Drug(generic: "Invalid Drug"),
+//    Drug(generic: "Invalid-Drug"),
+//    Drug(generic: "Invalid/Drug")
+
   ]
 }

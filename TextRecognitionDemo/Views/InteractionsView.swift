@@ -16,29 +16,37 @@ struct InteractionsView: View {
   
   var body: some View {
     NavigationView {
-    VStack {
-      if viewModel.isSearchComplete {
-        Form {
-          Section(header: Text(viewModel.drugsCheckedText)) {
-            ForEach(viewModel.interactions, id: \.self) { interaction in
-              Text(interaction.description)
+      VStack {
+        if viewModel.isSearchComplete {
+          Form {
+            Section(header: Text(viewModel.drugsCheckedText)) {
+              ForEach(viewModel.interactions, id: \.self) { interaction in
+                Text(interaction.description)
+              }
+            }
+            
+            if viewModel.showErrorMessage {
+              Section {
+                Text(viewModel.errorMessage)
+                  .font(.subheadline)
+                  .foregroundColor(.red)
+              }
+            }
+            
+            if !viewModel.missedDrugs.isEmpty {
+              Section(header: Text("Drugs excluded from check due to error")) {
+                ForEach(viewModel.missedDrugs, id: \.self) { drug in
+                  Text(drug)
+                }
+              }
             }
           }
-          
-          if viewModel.showErrorMessage {
-            Section {
-              Text(viewModel.errorMessage)
-                .fontWeight(.semibold)
-                .foregroundColor(.red)
-            }
-          }
+        } else {
+          Text("Interaction check in progress")
+            .padding()
         }
-      } else {
-        Text("Interaction check in progress")
-          .padding()
       }
-    }
-    .navigationTitle("Interactions")
+      .navigationTitle("Interactions")
     }
     .onAppear(perform: viewModel.fetchInteractions)
   }

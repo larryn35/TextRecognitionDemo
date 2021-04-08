@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import Combine
 
 final class InteractionsViewModel: ObservableObject {
   @Published var interactions = [Interaction]()
   @Published var isSearchComplete = false
-  @Published var errorMessage = ""
   @Published var showErrorMessage = false
+  @Published var errorMessage = ""
   @Published var drugsChecked = 0
+  @Published var missedDrugs = [String]()
   
   let apiService: APIServiceProtocol
   var combineHelper: CombineHelperProtocol
@@ -28,6 +30,102 @@ final class InteractionsViewModel: ObservableObject {
   
   var drugsCheckedText: String {
     "Drugs checked: \(drugsChecked)"
+  }
+}
+
+// MARK: - Fetch data
+
+extension InteractionsViewModel {
+  
+  // 1. Create requests for RxCuis (createIDRequest)
+  // 2. Merges and performs requests (combineHelper.mergeRequests)
+  // 3. RxCuis passed into fetchJSON, where it's joined
+  // 4. Interactions URL constructed from joined string (constructInteractionsURL)
+  // 5. Interactions request performed with URL (apiService.getJSON)
+  
+  func fetchInteractions() {
+    let drugMatchesCount = drugMatches.count
+    let requests = drugMatches.map { createIDRequest(for: $0) }
+    
+    combineHelper.mergeRequests(requests) { [weak self] drugIDs in
+      if drugIDs.isEmpty {
+        self?.updateErrorMessage(for: .mergeRequestError)
+        return
+      }
+      
+      self?.drugsChecked = drugIDs.count
+      
+      if drugMatchesCount > drugIDs.count {
+        let drugsMissing = drugMatchesCount - drugIDs.count
+        self?.updateErrorMessage(for: .missingDrug(count: drugsMissing))
+      }
+      
+      self?.fetchJSON(for: drugIDs)
+    }
+  }
+}
+
+// MARK: - Fetch components
+
+extension InteractionsViewModel {
+  
+  func constructInteractionsURL(with ids: [String]) -> URL? {
+    let joinedIDs = ids.joined(separator: "+")
+    
+    var interactionsURL: URL? {
+      var components = URLComponents()
+      components.scheme = "https"
+      components.host = "rxnav.nlm.nih.gov"
+      components.path = "/REST/interaction/list.json"
+      components.queryItems = [
+        URLQueryItem(name: "rxcuis", value: joinedIDs),
+      ]
+      return components.url
+    }
+    return interactionsURL
+  }
+  
+  func createIDRequest(for drug: Drug) -> AnyPublisher<String, Never> {
+    guard let url = drug.rxCuiURL else {
+      return Just("").eraseToAnyPublisher()
+    }
+    
+    let request = URLRequest(url: url)
+    return URLSession.shared.dataTaskPublisher(for: request)
+      .map { $0.data }
+      .decode(type: RxCui.self, decoder: JSONDecoder())
+      .receive(on: DispatchQueue.main)
+      .compactMap { $0.id }
+      .catch { [weak self] error -> Just<String> in
+        self?.missedDrugs.append(drug.generic)
+        return Just("")
+      }
+      .eraseToAnyPublisher()
+  }
+  
+  private func fetchJSON(for ids: [String]) {
+    let url = constructInteractionsURL(with: ids)
+    
+    guard let wrappedURL = url else {
+      updateErrorMessage(for: .invalidURL)
+      return
+    }
+    
+    apiService.getJSON(url: wrappedURL) { [weak self] (result: Result<InteractionsContainer, APIError>) in
+      switch result {
+      case .success(let fetched):
+        guard let fetchedInteractions = fetched.interactions else { return }
+        let interactionsSet = Set(fetchedInteractions)
+        self?.interactions = Array(interactionsSet)
+        self?.isSearchComplete = true
+      case .failure(let error):
+        switch error {
+        case .error(let message):
+          print(message)
+          self?.updateErrorMessage(for: .jsonError)
+        }
+      }
+    }
   }
 }
 
@@ -50,6 +148,7 @@ extension InteractionsViewModel {
       } else {
         errorMessage = "Important: A drug from the list was not included in the check due to an error. This list may not include all possible interactions."
       }
+      
     case .mergeRequestError:
       errorMessage = "Error: Unable to get information for drugs"
       
@@ -63,76 +162,5 @@ extension InteractionsViewModel {
     
     showErrorMessage = true
     isSearchComplete = true
-  }
-}
-
-// MARK: - Construct URL
-
-extension InteractionsViewModel {
-  
-  func constructInteractionsURL(with ids: [String]) -> URL? {
-    let joinedIDs = ids.joined(separator: "+")
-    
-    var interactionsURL: URL? {
-      var components = URLComponents()
-      components.scheme = "https"
-      components.host = "rxnav.nlm.nih.gov"
-      components.path = "/REST/interaction/list.json"
-      components.queryItems = [
-        URLQueryItem(name: "rxcuis", value: joinedIDs),
-      ]
-      return components.url
-    }
-    return interactionsURL
-  }
-}
-
-// MARK: - Fetch data
-
-extension InteractionsViewModel {
-  
-  func fetchInteractions() {
-    let drugMatchesCount = drugMatches.count
-    
-    let urls = drugMatches.compactMap { $0.rxCuiURL }
-    let requests = urls.map { combineHelper.createIDRequest(fromURL: $0) }
-    
-    combineHelper.mergeRequests(requests) { [weak self] drugIDs in
-      if drugIDs.isEmpty {
-        self?.updateErrorMessage(for: .mergeRequestError)
-        return
-      }
-      
-      self?.drugsChecked = drugIDs.count
-      
-      if drugMatchesCount > drugIDs.count {
-        let drugsMissing = drugMatchesCount - drugIDs.count
-        self?.updateErrorMessage(for: .missingDrug(count: drugsMissing))
-      }
-      
-      self?.fetchJSON(for: drugIDs)
-    }
-  }
-  
-  private func fetchJSON(for ids: [String]) {
-    let url = constructInteractionsURL(with: ids)
-    
-    guard let wrappedURL = url else {
-      updateErrorMessage(for: .invalidURL)
-      return
-    }
-    
-    apiService.getJSON(url: wrappedURL) { [weak self] (result: Result<InteractionsContainer, APIError>) in
-      switch result {
-      case .success(let fetched):
-        guard let fetchedInteractions = fetched.interactions else { return }
-        let interactionsSet = Set(fetchedInteractions)
-        self?.interactions = Array(interactionsSet)
-        self?.isSearchComplete = true
-      case .failure(let error):
-        print(error.localizedDescription)
-        self?.updateErrorMessage(for: .jsonError)
-      }
-    }
   }
 }
