@@ -5,14 +5,14 @@
 //  Created by Larry N on 4/5/21.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 
 final class InteractionsViewModel: ObservableObject {
   @Published var interactions = [Interaction]()
   @Published var isSearchComplete = false
-  @Published var showErrorMessage = false
-  @Published var errorMessage = ""
+  @Published var showInteractionsMessage = false
+  @Published var interactionsMessage = ""
   @Published var drugsChecked = 0
   @Published var missedDrugs = [String]()
   
@@ -29,7 +29,15 @@ final class InteractionsViewModel: ObservableObject {
   }
   
   var drugsCheckedText: String {
-    "Drugs checked: \(drugsChecked)"
+    let missedDrugsSet = Set(missedDrugs)
+    var drugMatchesSet = Set(drugMatches.map { $0.generic })
+    drugMatchesSet.formSymmetricDifference(missedDrugsSet)
+    let drugsCheckedArray = Array(drugMatchesSet)
+    if drugsCheckedArray.isEmpty {
+      return "No drugs checked"
+    } else {
+      return drugsCheckedArray.joined(separator: ", ")
+    }
   }
 }
 
@@ -49,7 +57,7 @@ extension InteractionsViewModel {
     
     combineHelper.mergeRequests(requests) { [weak self] drugIDs in
       if drugIDs.isEmpty {
-        self?.updateErrorMessage(for: .mergeRequestError)
+        self?.updateInteractionsMessage(for: .mergeRequestError)
         return
       }
       
@@ -57,7 +65,7 @@ extension InteractionsViewModel {
       
       if drugMatchesCount > drugIDs.count {
         let drugsMissing = drugMatchesCount - drugIDs.count
-        self?.updateErrorMessage(for: .missingDrug(count: drugsMissing))
+        self?.updateInteractionsMessage(for: .missingDrug(count: drugsMissing))
       }
       
       self?.fetchJSON(for: drugIDs)
@@ -107,7 +115,7 @@ extension InteractionsViewModel {
     let url = constructInteractionsURL(with: ids)
     
     guard let wrappedURL = url else {
-      updateErrorMessage(for: .invalidURL)
+      updateInteractionsMessage(for: .invalidURL)
       return
     }
     
@@ -122,14 +130,16 @@ extension InteractionsViewModel {
         switch error {
         case .error(let message):
           print(message)
-          self?.updateErrorMessage(for: .jsonError)
+          
+          // Drugs that do not interact with each other count as error, since JSON cannot decode "missing" data
+          self?.updateInteractionsMessage(for: .jsonRequestCompleted)
         }
       }
     }
   }
 }
 
-// MARK:  Error handling
+// MARK: - Error handling
 
 extension InteractionsViewModel {
   
@@ -137,30 +147,34 @@ extension InteractionsViewModel {
     case missingDrug(count: Int)
     case mergeRequestError
     case invalidURL
-    case jsonError
+    case jsonRequestCompleted
   }
   
-  private func updateErrorMessage(for errorType: InteractionsError) {
+  private func updateInteractionsMessage(for errorType: InteractionsError) {
     switch errorType {
     case .missingDrug(count: let count):
-      if count > 1 {
-        errorMessage = "Important: \(count) drugs from the list were not included in the check due to an error. This list may not include all possible interactions."
-      } else {
-        errorMessage = "Important: A drug from the list was not included in the check due to an error. This list may not include all possible interactions."
-      }
+      interactionsMessage = "Unable to retrieve information for \(count) drug(s) from the list. This list may not include all possible interactions."
       
     case .mergeRequestError:
-      errorMessage = "Error: Unable to get information for drugs"
+      interactionsMessage = "Error: Unable to get information for drugs"
       
     case .invalidURL:
-      errorMessage = "Error: URL is invalid"
+      interactionsMessage = "Error: URL is invalid"
       
-    case .jsonError:
-      errorMessage = "Error: Unable to get interactions from URL"
-      interactions = []
+    case .jsonRequestCompleted:
+      // Request finished successfully and drugs have no interactions among them
+      if drugsChecked > 0 {
+        print("No interactions found")
+        // Failed to fetch interactions
+      } else {
+        interactionsMessage = "Error: Unable to get interactions from URL"
+        interactions = []
+      }
     }
     
-    showErrorMessage = true
+    if !interactionsMessage.isEmpty {
+      showInteractionsMessage = true
+    }
     isSearchComplete = true
   }
 }

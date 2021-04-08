@@ -68,23 +68,23 @@ class InteractionsVMTests: XCTestCase {
                                           drugMatches: MockData.fiveDrugMatches)
     
     // Error status before fetch
-    XCTAssertEqual(viewModel.errorMessage,
+    XCTAssertEqual(viewModel.interactionsMessage,
                    "",
                    "Error message not blank at start")
     
-    XCTAssertFalse(viewModel.showErrorMessage,
-                   "showErrorMessage not set to false at start")
+    XCTAssertFalse(viewModel.showInteractionsMessage,
+                   "showInteractionsMessage not set to false at start")
     
     // Fetch completes with empty array
     viewModel.fetchInteractions()
     
     // Error status following fetch
-    XCTAssertEqual(viewModel.errorMessage,
+    XCTAssertEqual(viewModel.interactionsMessage,
                    "Important: A drug from the list was not included in the check due to an error. This list may not include all possible interactions.",
                    "Error message not set correctly after merge failure")
     
-    XCTAssertTrue(viewModel.showErrorMessage,
-                  "showErrorMessage not set to true following merge failure")
+    XCTAssertTrue(viewModel.showInteractionsMessage,
+                  "showInteractionsMessage not set to true following merge failure")
   }
   
   func testErrorsWhenMergeRequestsReturnsWithMultipleMissedDrugs() {
@@ -93,23 +93,23 @@ class InteractionsVMTests: XCTestCase {
                                           drugMatches: MockData.fiveDrugMatches)
     
     // Error status before fetch
-    XCTAssertEqual(viewModel.errorMessage,
+    XCTAssertEqual(viewModel.interactionsMessage,
                    "",
                    "Error message not blank at start")
     
-    XCTAssertFalse(viewModel.showErrorMessage,
-                   "showErrorMessage not set to false at start")
+    XCTAssertFalse(viewModel.showInteractionsMessage,
+                   "showInteractionsMessage not set to false at start")
     
     // Fetch completes with empty array
     viewModel.fetchInteractions()
     
     // Error status following fetch
-    XCTAssertEqual(viewModel.errorMessage,
+    XCTAssertEqual(viewModel.interactionsMessage,
                    "Important: 2 drugs from the list were not included in the check due to an error. This list may not include all possible interactions.",
                    "Error message not set correctly after merge failure")
     
-    XCTAssertTrue(viewModel.showErrorMessage,
-                  "showErrorMessage not set to true following merge failure")
+    XCTAssertTrue(viewModel.showInteractionsMessage,
+                  "showInteractionsMessage not set to true following merge failure")
   }
   
   func testSearchCompleteSetToTrueAfterMergeMissesDrugs() {
@@ -135,23 +135,23 @@ class InteractionsVMTests: XCTestCase {
                                           drugMatches: MockData.fiveDrugMatches)
     
     // Error status before fetch
-    XCTAssertEqual(viewModel.errorMessage,
+    XCTAssertEqual(viewModel.interactionsMessage,
                    "",
                    "Error message not blank at start")
     
-    XCTAssertFalse(viewModel.showErrorMessage,
-                   "showErrorMessage not set to false at start")
+    XCTAssertFalse(viewModel.showInteractionsMessage,
+                   "showInteractionsMessage not set to false at start")
     
     // Fetch completes with empty array
     viewModel.fetchInteractions()
     
     // Error status following fetch
-    XCTAssertEqual(viewModel.errorMessage,
+    XCTAssertEqual(viewModel.interactionsMessage,
                    "Error: Unable to get information for drugs",
                    "Error message not set correctly after merge failure")
     
-    XCTAssertTrue(viewModel.showErrorMessage,
-                  "showErrorMessage not set to true following merge failure")
+    XCTAssertTrue(viewModel.showInteractionsMessage,
+                  "showInteractionsMessage not set to true following merge failure")
   }
   
   func testSearchCompleteSetToTrueAfterFailedMerge() {
@@ -179,23 +179,23 @@ class InteractionsVMTests: XCTestCase {
                                           drugMatches: MockData.fiveDrugMatches)
     
     // Error status before fetch
-    XCTAssertEqual(viewModel.errorMessage,
+    XCTAssertEqual(viewModel.interactionsMessage,
                    "",
                    "Error message not blank at start")
     
-    XCTAssertFalse(viewModel.showErrorMessage,
-                   "showErrorMessage not set to false at start")
+    XCTAssertFalse(viewModel.showInteractionsMessage,
+                   "showInteractionsMessage not set to false at start")
     
     // Fetch ending in getJSON failure
     viewModel.fetchInteractions()
     
     // Error status following fetch
-    XCTAssertEqual(viewModel.errorMessage,
+    XCTAssertEqual(viewModel.interactionsMessage,
                    "Error: Unable to get interactions from URL",
                    "Error message not set correctly after getJSON failure")
     
-    XCTAssertTrue(viewModel.showErrorMessage,
-                  "showErrorMessage not set to true following getJSON failure")
+    XCTAssertTrue(viewModel.showInteractionsMessage,
+                  "showInteractionsMessage not set to true following getJSON failure")
   }
   
   func testSearchCompleteSetToTrueAfterGetJSONFail() throws {

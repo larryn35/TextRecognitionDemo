@@ -19,22 +19,31 @@ struct InteractionsView: View {
       VStack {
         if viewModel.isSearchComplete {
           Form {
-            Section(header: Text(viewModel.drugsCheckedText)) {
+            Section {
+              if viewModel.drugsChecked > 0 && viewModel.interactions.isEmpty {
+                Text("No interactions found")
+              }
+              
               ForEach(viewModel.interactions, id: \.self) { interaction in
                 Text(interaction.description)
               }
             }
             
-            if viewModel.showErrorMessage {
-              Section {
-                Text(viewModel.errorMessage)
+            Section(header: Text("Drugs checked")) {
+              Text(viewModel.drugsCheckedText)
+                .font(.subheadline)
+            }
+            
+            if viewModel.showInteractionsMessage {
+              Section(header: Text("Attention")) {
+                Text(viewModel.interactionsMessage)
                   .font(.subheadline)
                   .foregroundColor(.red)
               }
             }
             
             if !viewModel.missedDrugs.isEmpty {
-              Section(header: Text("Drugs excluded from check due to error")) {
+              Section(header: Text("Drugs excluded from check")) {
                 ForEach(viewModel.missedDrugs, id: \.self) { drug in
                   Text(drug)
                 }

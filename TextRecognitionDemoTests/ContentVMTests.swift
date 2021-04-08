@@ -76,7 +76,7 @@ class ContentVMTests: XCTestCase {
 
     // Error status before loading image
     XCTAssertFalse(viewModel.showErrorMessage,
-                   "showErrorMessage not set to false at start")
+                   "showInteractionsMessage not set to false at start")
     
     XCTAssertTrue(viewModel.errorMessage.isEmpty,
                   "errorMessage not blank at start")
@@ -87,7 +87,7 @@ class ContentVMTests: XCTestCase {
     
     // Error status after loading image
     XCTAssertTrue(viewModel.showErrorMessage,
-                  "showErrorMessage not set to true after recognizer completed with failure")
+                  "showInteractionsMessage not set to true after recognizer completed with failure")
     
     XCTAssertEqual(viewModel.errorMessage,
                    "Failed to process image",
@@ -97,7 +97,7 @@ class ContentVMTests: XCTestCase {
     viewModel.resetErrors()
     
     XCTAssertFalse(viewModel.showErrorMessage,
-                   "showErrorMessage not reset to false")
+                   "showInteractionsMessage not reset to false")
     
     XCTAssertEqual(viewModel.errorMessage,
                    "",
@@ -112,7 +112,7 @@ class ContentVMTests: XCTestCase {
     
     // Error status after attempting to load image
     XCTAssertTrue(viewModel.showErrorMessage,
-                  "showErrorMessage not set to true after attempting to load nil inputImage")
+                  "showInteractionsMessage not set to true after attempting to load nil inputImage")
     
     XCTAssertEqual(viewModel.errorMessage,
                    "Failed to get picture from camera",
@@ -122,7 +122,7 @@ class ContentVMTests: XCTestCase {
     viewModel.resetErrors()
     
     XCTAssertFalse(viewModel.showErrorMessage,
-                   "showErrorMessage not reset to false")
+                   "showInteractionsMessage not reset to false")
     
     XCTAssertEqual(viewModel.errorMessage,
                    "",
