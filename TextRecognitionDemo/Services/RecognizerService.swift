@@ -21,7 +21,7 @@ struct RecognizerService: RecognizerServiceProtocol {
     textRecognizer.process(visionImage) { result, error in
       guard error == nil, let result = result else {
         // Error handling
-        completion(.failure(.error("textRecognizer unable to process image")))
+        completion(.failure(.error("Failed to process image")))
         return
       }
       // Recognized text

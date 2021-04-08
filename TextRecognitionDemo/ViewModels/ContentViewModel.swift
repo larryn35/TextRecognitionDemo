@@ -19,9 +19,9 @@ final class ContentViewModel: ObservableObject {
   init(recognizer: RecognizerServiceProtocol = RecognizerService()) {
     self.recognizer = recognizer
   }
-  
-  var photoTabTitle: String {
-    image != nil ? "Photo taken" : "No photo taken yet"
+
+  var drugMatchesTabText: String {
+    drugMatches.isEmpty ? "Drugs Found" : "Drugs Found: Long-press to remove drug"
   }
   
   // Load image from Camera into recognizer
@@ -49,10 +49,13 @@ final class ContentViewModel: ObservableObject {
           }
         }
         
-      case .failure:
-        self.errorMessage = "Failed to process image"
-        self.showErrorMessage = true
-        self.drugMatches = []
+      case .failure(let error):
+        switch error {
+        case .error(let message):
+          self.errorMessage = message
+          self.showErrorMessage = true
+          self.drugMatches = []
+        }
       }
     }
   }
@@ -61,6 +64,7 @@ final class ContentViewModel: ObservableObject {
     drugMatches = []
     cleanedResults = []
     image = nil
+    resetErrors()
   }
   
   func resetErrors() {
