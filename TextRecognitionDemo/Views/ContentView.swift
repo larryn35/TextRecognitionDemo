@@ -32,9 +32,10 @@ struct ContentView: View {
       TabView {
         drugMatchesView
         
+        imageTakenView
+        
         textRecognizedView
         
-        imageTakenView
       }
       .tabViewStyle(PageTabViewStyle())
       .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
